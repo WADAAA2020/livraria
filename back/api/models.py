@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class Autor(models.Model): 
+    nome = models.CharField(max_length=100)
+    s_nome = models.CharField(max_length=100)
+    nasc = models.DateField(null=True, blank=True)
+    nacio = models.CharField(max_length=50, null=True, blank=True)
+    blogr = models.TextField()
+
+    
