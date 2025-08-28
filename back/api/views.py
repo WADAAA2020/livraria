@@ -2,12 +2,14 @@ from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import Autor, Editora, Livro
 from .serializers import AutorSerializer, EditoraSerializer, LivroSerializer
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['GET', 'POST'])
+@permission_classes([IsAuthenticated])
 def listar_autores(request):
     if request.method == 'GET':
         queryset = Autor.objects.all()
@@ -26,11 +28,13 @@ def listar_autores(request):
 class AutoresView(ListCreateAPIView):
     queryset = Autor.objects.all()
     serializer_class = AutorSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class AutoresDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Autor.objects.all()
     serializer_class = AutorSerializer
+    permission_classes = [IsAuthenticated]
 ###################################################    
 
 
@@ -38,11 +42,13 @@ class AutoresDetailView(RetrieveUpdateDestroyAPIView):
 class EditorasView(ListCreateAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class EditorasDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Editora.objects.all()
     serializer_class = EditoraSerializer
+    permission_classes = [IsAuthenticated]
 #######################################################    
 
 
@@ -50,9 +56,11 @@ class EditorasDetailView(RetrieveUpdateDestroyAPIView):
 class LivrosView(ListCreateAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializer
+    permission_classes = [IsAuthenticated]
 
 
 class LivrosDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Livro.objects.all()
     serializer_class = LivroSerializer
+    permission_classes = [IsAuthenticated]
 ##################################################
