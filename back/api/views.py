@@ -35,7 +35,7 @@ class AutoresView(ListCreateAPIView):
     # permission_classes = [IsAuthenticated]
     
     filter_backends = [DjangoFilterBackend, SearchFilter]
-    filterset_fields = ['id', 'autor', 's_autor'] # permite o filtro exato
+    filterset_fields = ['id'] # permite o filtro exato
     search_fields = ['autor', 's_autor'] # habilita a busca total de strings
     filterset_class = AutorFilter 
     
