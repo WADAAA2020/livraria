@@ -12,6 +12,7 @@ import { RouterLink } from "@angular/router";
 
       <nav style="margin-top:1rem; display:flex; gap:.75rem">
         <a routerLink="autores">Ver autores</a>
+         <a routerLink="editoras">Ver editoras</a>
       </nav>
     </section>
   `
