@@ -19,7 +19,7 @@ import { AuthService } from '../../services/auth.services';
         <ul style="padding-left:1.25rem">
           @for (a of autores(); track a.id) {
             <li style="margin:.25rem 0">
-              <strong>{{ a.autor }} {{ a.s_autor }}</strong>
+              <strong>{{ a.s_autor }} {{ a.s_autor }}</strong>
               @if (a.nacio) { — <em style="color:#666">{{ a.nacio }}</em> }
               @if (a.nasc) { • {{ a.nasc }} }
               @if (a.biogr) { <div style="color:#555">{{ a.biogr }}</div> }
@@ -43,7 +43,6 @@ export class AutoresPage {
 
   constructor() {
     console.log("Token de acesso: ", this.auth.token());
-    console.log("Autores: ", this.autores);
     
     this.svc.listar().subscribe({
       next: (data) => { this.autores.set(data); this.carregando.set(false); },

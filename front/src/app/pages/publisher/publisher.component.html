@@ -1,5 +1,5 @@
 <section style="max-width:900px;margin:2rem auto;padding:0 1rem">
-  <h1>Autores</h1>
+  <h1>Editoras</h1>
 
   @if (carregando()) {
     <p>Carregando…</p>
@@ -8,7 +8,7 @@
   } @else {
     <ul style="padding-left:1.25rem">
       @for (a of editoras(); track a.id) {
-        <li style="margin:.25rem 0">
+        <li style="margin:.30rem 0">
           <strong>{{ a.editora }}</strong>
           @if (a.cnpj) { — <em style="color:#666">{{ a.cnpj }}</em> }
           @if (a.endereco) { • {{ a.endereco }} }
