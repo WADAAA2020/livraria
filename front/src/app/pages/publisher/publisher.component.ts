@@ -17,6 +17,7 @@ export class PublisherPage {
   carregando = signal(true);
   erro = signal<string | null>(null);
 
+  
   constructor() {
     this.svc.listar().subscribe({
       next: (data) => { this.editoras.set(data); this.carregando.set(false); },
