@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+
 class Autor(models.Model):
     autor = models.CharField(max_length=100)
     s_autor = models.CharField(max_length=100) 
@@ -11,6 +12,7 @@ class Autor(models.Model):
     def __str__(self):
         return f'{self.autor} {self.s_autor}'
     
+
 class Editora(models.Model):
     editora = models.CharField(max_length=100)
     cnpj = models.CharField(max_length=18, unique=True, null=True, blank=True)    
@@ -39,3 +41,11 @@ class Livro(models.Model):
     disponivel = models.BooleanField(default=True)
     dimensoes = models.CharField()
     peso = models.DecimalField(max_digits=10, decimal_places=2)
+
+
+class Imagem(models.Model):
+    Imagem = models.ImageField(upload_to="upload/%Y%m%d/")
+    criado_em = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Imagem #{self.pk}"

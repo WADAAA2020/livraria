@@ -2,6 +2,8 @@ from pathlib import Path
 from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / 'media'
 
 SECRET_KEY = 'django-insecure-x35irypa-5_w)beo_di@syr!qw6v4^3)om5g#4nh-0u%&uj^%&'
 

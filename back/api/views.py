@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .models import Autor, Editora, Livro
-from .serializers import AutorSerializer, EditoraSerializer, LivroSerializer, RegisterSerializer
+from .models import Autor, Editora, Livro, Imagem
+from .serializers import AutorSerializer, EditoraSerializer, LivroSerializer, RegisterSerializer, ImagemSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
+from rest_framework.viewsets import ModelViewSet
 
 #filters
 from .filters import AutorFilter
@@ -81,3 +82,9 @@ class RegisterView(ListCreateAPIView):
             'user': {'id': user.id, 'username': user.username},
             'tokens': {'refresh': str(refresh), 'access': str(refresh.access_token)}
         }, status=status.HTTP_201_CREATED)
+    
+
+class ImagemViewSet(ModelViewSet):
+    queryset = Imagem.objects.all().order_by("criado_em")
+    serializer_class = ImagemSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
