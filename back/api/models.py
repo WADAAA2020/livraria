@@ -39,7 +39,7 @@ class Livro(models.Model):
     isbn = models.CharField(max_length=255)
     descricao = models.TextField()
     idioma = models.CharField(max_length=100, default="Português")
-    ano_publicacao = models.IntegerField(validators=[MinValueValidator(1111), MaxValueValidator(9999)])
+    ano = models.IntegerField(validators=[MinValueValidator(1111), MaxValueValidator(9999)])
     paginas = models.IntegerField()
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     estoque = models.IntegerField()
