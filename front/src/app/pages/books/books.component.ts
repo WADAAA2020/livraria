@@ -6,14 +6,12 @@ import { Livro } from '../../models/livro';
 import { AuthService } from '../../services/auth.services';
 import { environment } from '../../../environments/environments';
 
-
 @Component({
   selector: 'app-books',
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './books.component.html',
 })
-
 export class BooksComponent {
   private svc = inject(LivrosService);
   private auth = inject(AuthService);
@@ -30,15 +28,13 @@ export class BooksComponent {
   private upStatus = new Map<number, 'idle' | 'up' | 'ok' | 'err'>();
 
   constructor() {
-    console.log('Token de acesso:', this.auth.token());
-
+    
     // Carregar lista inicial de livros
     this.svc.listar({ ordering: 'titulo' }).subscribe({
       next: (data) => {
         this.livros.set(data);
         this.carregando.set(false);
       },
-
       error: () => {
         this.erro.set('Falha ao carregar livros');
         this.carregando.set(false);
@@ -107,7 +103,6 @@ export class BooksComponent {
           this.previews.delete(id);
         }, 500);
       },
-
       error: (err) => {
         console.error(err);
         this.upStatus.set(id, 'err');

@@ -18,7 +18,7 @@ export class AutoresPage {
   erro = signal<string | null>(null);
 
   constructor() {
-    console.log("Token de acesso: ", this.auth.token());
+    // console.log("Token de acesso: ", this.auth.token());
     
     this.svc.listar().subscribe({
       next: (data) => { this.autores.set(data); this.carregando.set(false); },
